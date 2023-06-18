@@ -16,7 +16,7 @@ class PhoneBook:
     def add_contact(self, fields: tuple):
         self.contacts.append(Contact(fields[0], fields[1], fields[2]))
 
-    def search(self, word: str) -> Contact:
+    def search(self, word: str) -> list[Contact]:
         result = []
         for contact in self.contacts:
             if word.lower() in contact.for_search():
@@ -29,7 +29,7 @@ class PhoneBook:
             if uid == contact.uid:
                 result = contact
         return result
-
+    
     def replace(self, to_change: Contact, uid: int, fields: tuple):
         to_change.change(uid, fields)
 

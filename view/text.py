@@ -45,3 +45,6 @@ def input_int(upper: int):
 def input_error(upper: int):
     return f'Некорректный ввод. Введите число от 1 до {upper}: ' 
 
+def exact_input_error(numbers: list[int]):
+    return f'Некорректный ввод. Введите число из списка: {str(numbers).strip("[]")}' 
+

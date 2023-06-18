@@ -1,5 +1,6 @@
 from phone_book import PhoneBook
 from contact import Contact
+from contact_list import ContactList
 from view import Menu, in_out, text
 import services
 
@@ -29,9 +30,9 @@ def start():
                 in_out.show_contacts(result)
             case 4:
                 word = in_out.input_return(text.search_word)
-                in_out.show_contacts(pb.search(word))
-                upper = services.get_max_id()
-                uid = in_out.input_return_int(text.input_index, upper)
+                result = ContactList(pb.search(word))
+                in_out.show_contact_list(result)
+                uid = in_out.input_exact(text.input_index, result.get_uids())
                 to_change = pb.search_id(uid)
                 old_name = to_change.name
                 new_fields = in_out.input_fields(text.input_change_contact)
@@ -43,9 +44,9 @@ def start():
                 else: in_out.print_message(text.contact_not_changed(old_name))
             case 5:
                 word = in_out.input_return(text.delete_word)
-                in_out.show_contacts(pb.search(word))
-                upper = services.get_max_id()
-                uid = in_out.input_return_int(text.delete_index, upper)
+                result = ContactList(pb.search(word))
+                in_out.show_contact_list(result)
+                uid = in_out.input_exact(text.input_index, result.get_uids())
                 name =  pb.search_id(uid).name
                 if (services.confirm_changes()):
                     pb.delete(uid)
