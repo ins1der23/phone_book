@@ -1,17 +1,11 @@
 from .text import *
-from contact import Contact
+
 
 class InOut:
 
-    def menu() -> int:
-        print(main_menu)
-        while True:
-            choice = input(menu_choice)
-            if choice.isdigit() and 0 < int(choice) < 9:
-                return int(choice)
-        print(input_error)
-
-
+    def show_menu(menu: object):
+        print(menu)
+    
     def show_contacts(book: list):
         if len(book) != 0:
             print('\n' + '=' * 67)
@@ -52,5 +46,6 @@ class InOut:
     def input_return_int(message: str, upper: int) -> int:
         while True:
             uid = input(message)
-            if uid.isdigit and 0 < int(uid) < upper:
+            if uid.isdigit and 0 < int(uid) <= upper:
                 return int(uid)
+            else: print(input_error(upper))

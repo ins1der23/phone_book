@@ -17,4 +17,4 @@ def check_fields(fields: tuple) -> bool:
     return flag
 
 def get_max_id()-> int:
-    return Contact.count_id
+    return Contact.count_id - 1

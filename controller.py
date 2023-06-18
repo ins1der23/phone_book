@@ -1,16 +1,16 @@
 from phone_book import PhoneBook
 from contact import Contact
-from view import InOut
+from view import InOut, Menu, text
 import services
-from view import text
-
 
 def start():
     pb = PhoneBook('phones.txt')
     pb.open_file()
     InOut.print_message(text.open_successful)
     while True:
-        choice = InOut.menu()
+        main_menu = Menu(text.main_menu)
+        InOut.show_menu(main_menu)
+        choice = main_menu.choice(text.input_int(len(main_menu.choices)))
         match choice:
             case 1:
                 InOut.show_contacts(pb.contacts)
