@@ -21,9 +21,6 @@ class Contact:
         self.phone = fields[1] if fields[1] != '' else self.name
         self.comment = fields[2] if fields[2] != '' else self.name
 
-    def get_max_id()-> int:
-        return Contact.count_id
-    
-   
+  
 
 

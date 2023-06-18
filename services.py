@@ -1,3 +1,4 @@
+from contact import Contact
 from view import InOut
 from view import text
 
@@ -14,3 +15,6 @@ def check_fields(fields: tuple) -> bool:
             break
         else: flag = False
     return flag
+
+def get_max_id()-> int:
+    return Contact.count_id

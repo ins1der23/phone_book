@@ -30,7 +30,7 @@ def start():
             case 4:
                 word = InOut.input_return(text.search_word)
                 InOut.show_contacts(pb.search(word))
-                upper = Contact.get_max_id()
+                upper = services.get_max_id()
                 uid = InOut.input_return_int(text.input_index, upper)
                 to_change = pb.search_id(uid)
                 old_name = to_change.name
@@ -44,7 +44,7 @@ def start():
             case 5:
                 word = InOut.input_return(text.delete_word)
                 InOut.show_contacts(pb.search(word))
-                upper = Contact.get_max_id()
+                upper = services.get_max_id()
                 uid = InOut.input_return_int(text.delete_index, upper)
                 name =  pb.search_id(uid).name
                 if (services.confirm_changes()):
