@@ -1,4 +1,4 @@
-from .in_out import InOut
+from .in_out import input_return_int
 
 class Menu:
     def __init__(self, choices: list):
@@ -13,6 +13,6 @@ class Menu:
 
     def choice(self, message) -> int:
         upper = len(self.choices)
-        return InOut.input_return_int(message, upper)
+        return input_return_int(message, upper)
 
 

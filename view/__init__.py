@@ -1,6 +1,6 @@
-from .in_out import InOut
+from .in_out import *
 from .menu import Menu
 from .text import *
 
 
-__all__ = [InOut]
+__all__ = [in_out]
