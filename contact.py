@@ -18,8 +18,8 @@ class Contact:
     def change(self, uid, fields: tuple):
         self.uid = uid
         self.name = fields[0] if fields[0] != '' else self.name
-        self.phone = fields[1] if fields[1] != '' else self.name
-        self.comment = fields[2] if fields[2] != '' else self.name
+        self.phone = fields[1] if fields[1] != '' else self.phone
+        self.comment = fields[2] if fields[2] != '' else self.comment
 
   
 

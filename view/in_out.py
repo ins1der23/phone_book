@@ -1,3 +1,5 @@
+from msvcrt import getch
+
 from .text import *
 
 def show_menu(menu: object):
@@ -36,11 +38,12 @@ def print_info(message: str):
 
 def input_yes (message: str) -> bool:
     while True:
-        choice = input(message)
-        if choice.upper() == 'Y':
-            return True
-        elif choice.upper() == 'N':
-            return False
+        print(message)
+        choice = getch()
+        match choice:
+            case b'\r': return True
+            case b'\x1b': return False
+            
             
 def input_return(message: str) -> str:
     return input(message)
