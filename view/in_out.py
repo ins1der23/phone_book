@@ -1,5 +1,4 @@
 from msvcrt import getch
-
 from .text import *
 
 def show_menu(menu: object):
@@ -9,7 +8,6 @@ def show_contact_list(contact_list: object):
     print('\n' + '=' * 67)
     print(contact_list)
     print('=' * 67)
-
 
 def show_contacts(book: list):
     if len(book) != 0:
@@ -43,7 +41,6 @@ def input_yes (message: str) -> bool:
         match choice:
             case b'\r': return True
             case b'\x1b': return False
-            
             
 def input_return(message: str) -> str:
     return input(message)

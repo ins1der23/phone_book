@@ -42,3 +42,5 @@ class PhoneBook:
                 data += f"{contact.uid}:{contact.name}:{contact.phone}:{contact.comment}\n"
         with open(self.path, 'w', encoding='UTF-8') as file:
             file.write(data)
+
+    

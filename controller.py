@@ -3,6 +3,7 @@ from contact import Contact
 from contact_list import ContactList
 from view import Menu, in_out, text
 import services
+import contr_methods
 
 def start():
     pb = PhoneBook('phones.txt')
@@ -26,32 +27,30 @@ def start():
                     else: in_out.print_message(text.cancel_changes)
             case 3:
                 word = in_out.input_return(text.search_word).lower()
-                result = pb.search(word)
-                in_out.show_contacts(result)
+                result = ContactList(pb.search(word))
+                in_out.show_contact_list(result)
+                while True:
+                    contact_menu = Menu(text.contact_menu)
+                    in_out.show_menu(contact_menu)
+                    choice = contact_menu.choice(text.input_int(len(contact_menu.choices)))
+                    match choice:
+                        case 1: 
+                            contr_methods.change_contact(pb, result)
+                            break
+                        case 2: 
+                            contr_methods.delete_contact(pb, result)
+                            break 
+                        case 3: break
             case 4:
                 word = in_out.input_return(text.search_word)
                 result = ContactList(pb.search(word))
                 in_out.show_contact_list(result)
-                uid = in_out.input_exact(text.input_index, result.get_uids())
-                to_change = pb.search_id(uid)
-                old_name = to_change.name
-                new_fields = in_out.input_fields(text.input_change_contact)
-                if (services.check_fields(new_fields)):
-                    if (services.confirm_changes()):
-                        pb.replace(to_change, uid, new_fields)
-                        in_out.print_message(text.contact_changed(new_fields[0]))
-                    else: in_out.print_message(text.cancel_changes)
-                else: in_out.print_message(text.contact_not_changed(old_name))
+                contr_methods.change_contact(pb, result)
             case 5:
                 word = in_out.input_return(text.delete_word)
                 result = ContactList(pb.search(word))
                 in_out.show_contact_list(result)
-                uid = in_out.input_exact(text.input_index, result.get_uids())
-                name =  pb.search_id(uid).name
-                if (services.confirm_changes()):
-                    pb.delete(uid)
-                    in_out.print_message(text.contact_deleted(name))
-                else: (in_out.print_message(text.cancel_changes))
+                contr_methods.delete_contact(pb, result)
             case 6:
                 in_out.print_info(text.confirm_changes)
                 if (in_out.input_yes(text.yes_choose)):
