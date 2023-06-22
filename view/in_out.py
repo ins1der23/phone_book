@@ -32,7 +32,7 @@ def print_info(message: str):
     length = len(message)
     print('\n' + '-' * length)
     print(message)
-    print('-' * length + '\n')
+    print('-' * length )
 
 def input_yes (message: str) -> bool:
     while True:
@@ -48,13 +48,14 @@ def input_return(message: str) -> str:
 def input_return_int(message: str, upper: int) -> int:
     while True:
         uid = input(message)
-        if uid.isdigit and 0 < int(uid) <= upper:
+        if uid.isdigit() and 0 < int(uid) <= upper:
             return int(uid)
         else: print(input_error(upper))
 
 def input_exact(message, uids: list[int]):
     while True:
         uid = input(message)
-        if uid.isdigit and int(uid) in uids:
+        if uid.isdigit() and int(uid) in uids:
             return int(uid)
+        elif uid == '0': return None
         else: print(exact_input_error(uids))

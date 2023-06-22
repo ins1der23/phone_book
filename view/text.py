@@ -20,9 +20,10 @@ input_new_contact = 'Введите данные нового контакта: 
 new_contact = ['Введите имя контакта: ', 'Введите телефон: ', 'Введите коммент: ']
 empty_fields = 'Контакт не может быть пустым'
 search_word = 'Введите искомый элемент: '
-input_index = 'Введите индекс изменяемого контакта: '
+input_index = 'Введите индекс изменяемого контакта или 0 для отмены: '
 input_change_contact = 'Введите данные изменяемого контакта или Enter, чтобы оставить без изменений: '
-delete_word = 'Введите удаляемый элемент: '
+change_word = 'Введите контакт для изменения:  '
+delete_word = 'Введите удаляемый контакт: '
 delete_index = 'Введите индекс удаляемого контакта: '
 phones_chaged = 'Телефонная книга была изменена'
 yes_choose = 'Нажмите Enter для подтверждения или Esc для отмены '
@@ -32,11 +33,17 @@ cancel_changes = 'Изменения не были применены'
 def contact_saved(name: str):
     return f'Контакт {name} успешно сохранен'
 
+def changing_intension(name: str):
+    return f'Вы собираетесь изменить контакт {name}'
+
 def contact_changed(name: str):
     return f'Контакт {name} успешно изменен'
 
 def contact_not_changed(name: str):
     return f'Контакт {name} не изменен'
+
+def deleting_intension(name:str):
+    return f'Вы собираетесь удалить контакт {name}'
 
 def contact_deleted(name: str):
     return f'Контакт {name} удален'
@@ -49,4 +56,5 @@ def input_error(upper: int):
 
 def exact_input_error(numbers: list[int]):
     return f'Некорректный ввод. Введите число из списка: {str(numbers).strip("[]")} ' 
+
 

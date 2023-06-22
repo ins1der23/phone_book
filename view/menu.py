@@ -5,7 +5,7 @@ class Menu:
         self.choices = choices
 
     def __str__(self) -> str:
-        result = ''
+        result = '\n'
         enum_menu = list(enumerate(self.choices, 1))
         for key, value in enum_menu:
             result += f'{key}. {value:<25}\n'

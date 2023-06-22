@@ -26,7 +26,7 @@ def start():
                         in_out.print_message(text.contact_saved(new[0]))
                     else: in_out.print_message(text.cancel_changes)
             case 3:
-                word = in_out.input_return(text.search_word).lower()
+                word = in_out.input_return(text.search_word)
                 result = ContactList(pb.search(word))
                 in_out.show_contact_list(result)
                 while True:
@@ -35,22 +35,22 @@ def start():
                     choice = contact_menu.choice(text.input_int(len(contact_menu.choices)))
                     match choice:
                         case 1: 
-                            contr_methods.change_contact(pb, result)
+                            contr_methods.changing_contact(pb, result)
                             break
                         case 2: 
-                            contr_methods.delete_contact(pb, result)
+                            contr_methods.deleting_contact(pb, result)
                             break 
                         case 3: break
             case 4:
-                word = in_out.input_return(text.search_word)
+                word = in_out.input_return(text.change_word)
                 result = ContactList(pb.search(word))
                 in_out.show_contact_list(result)
-                contr_methods.change_contact(pb, result)
+                contr_methods.changing_contact(pb, result)
             case 5:
                 word = in_out.input_return(text.delete_word)
                 result = ContactList(pb.search(word))
                 in_out.show_contact_list(result)
-                contr_methods.delete_contact(pb, result)
+                contr_methods.deleting_contact(pb, result)
             case 6:
                 in_out.print_info(text.confirm_changes)
                 if (in_out.input_yes(text.yes_choose)):
