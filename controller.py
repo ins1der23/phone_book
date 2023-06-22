@@ -57,9 +57,15 @@ def start():
                     pb.save_file()
                     in_out.print_message(text.save_successful)
             case 7:
-                if (services.confirm_changes()):
-                    pb.save_file()
-                    in_out.print_message(text.save_successful)
-                else: (in_out.print_message(text.cancel_changes))
-                break
+                pb.save_temp_file()
+                if pb.compare_files():
+                    in_out.print_info(text.phones_chaged)
+                    if (services.confirm_changes()):
+                        pb.save_file()
+                        in_out.print_message(text.save_successful)
+                        break
+                    else:
+                        in_out.print_message(text.cancel_changes)
+                        break
+                else: break
                 

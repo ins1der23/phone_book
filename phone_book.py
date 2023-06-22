@@ -5,6 +5,7 @@ class PhoneBook:
     def __init__(self, path:str):
         self.contacts: list[Contact] = []
         self.path = path
+        self.temp_path = f'${self.path}'
 
     def open_file(self):
         with open(self.path, 'r', encoding='UTF-8') as file:
@@ -36,11 +37,24 @@ class PhoneBook:
     def delete(self, index: int):
         del self.contacts[index-1]
 
+    def save_temp_file(self):
+        data=''
+        for contact in self.contacts:
+                data += f"{contact.uid}:{contact.name}:{contact.phone}:{contact.comment}\n"
+        with open (self.temp_path, 'w', encoding='UTF-8') as file:
+            file.write(data)
+
+    def compare_files(self) -> bool:
+        with open(self.temp_path, 'r', encoding='UTF-8') as file:
+            temp_data = file.readlines()
+        with open(self.path, 'r', encoding='UTF-8') as file:
+            data = file.readlines()
+        if data != temp_data: return True
+        else: return False
+
     def save_file(self):
         data=''
         for contact in self.contacts:
                 data += f"{contact.uid}:{contact.name}:{contact.phone}:{contact.comment}\n"
-        with open(self.path, 'w', encoding='UTF-8') as file:
+        with open (self.path, 'w', encoding='UTF-8') as file:
             file.write(data)
-
-    
