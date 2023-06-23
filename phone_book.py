@@ -1,4 +1,6 @@
 from contact import Contact
+from os import remove
+from os import path
 
 class PhoneBook:
 
@@ -58,3 +60,7 @@ class PhoneBook:
                 data += f"{contact.uid}:{contact.name}:{contact.phone}:{contact.comment}\n"
         with open (self.path, 'w', encoding='UTF-8') as file:
             file.write(data)
+
+    def delete_temp(self):
+        if path.isfile(self.temp_path): remove(self.temp_path)
+        else: pass

@@ -63,9 +63,9 @@ def start():
                     if (services.confirm_changes()):
                         pb.save_file()
                         in_out.print_message(text.save_successful)
-                        break
                     else:
                         in_out.print_message(text.cancel_changes)
-                        break
-                else: break
+                pb.delete_temp()
+                break
+                
                 
